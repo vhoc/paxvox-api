@@ -72,9 +72,9 @@ $app->configure('app');
 |
 */
 
-#$app->middleware([
-#    App\Http\Middleware\ModifyHeadersMiddleware::class
-#]);
+$app->middleware([
+    'Nord\Lumen\Cors\CorsMiddleware',
+]);
 
  $app->routeMiddleware([
      'auth' => App\Http\Middleware\Authenticate::class
@@ -97,6 +97,7 @@ $app->register(App\Providers\EventServiceProvider::class);
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 $app->register(Chuckrincon\LumenConfigDiscover\DiscoverServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+$app->register('Nord\Lumen\Cors\CorsServiceProvider');
 
 /*
 |--------------------------------------------------------------------------

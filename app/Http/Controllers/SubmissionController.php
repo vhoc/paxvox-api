@@ -19,17 +19,25 @@ class SubmissionController extends Controller
 
     public function store( Request $request )
     {
-        $newSubmission = new Submission;
+        try
+        {
+            $newSubmission = new Submission;
 
-        $newSubmission->cliente_nombre = $request->clienteNombre;
-        $newSubmission->cliente_email = $request->clienteEmail;
-        $newSubmission->cliente_telefono = $request->clienteTelefono;
-        $newSubmission->responses = $request->responses;
+            $newSubmission->cliente_nombre = $request->clienteNombre;
+            $newSubmission->cliente_email = $request->clienteEmail;
+            $newSubmission->cliente_telefono = $request->clienteTelefono;
+            $newSubmission->responses = $request->responses;
 
-        $newSubmission->save();
+            $newSubmission->save();
 
-        return response()->json( 'Envío exitoso.', 201 )
-            ->header('Content-Type', 'application/json');
+            return response()->json( 'Envío exitoso.', 201 )
+                ->header('Content-Type', 'application/json');
+        }
+        catch (Exception $e)
+        {
+            report($e);
+            return false;
+        }
     }
 
     public function index()

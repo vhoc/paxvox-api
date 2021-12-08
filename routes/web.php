@@ -21,7 +21,7 @@ $router->group(['middleware' => 'auth','prefix' => 'api'], function ($router)
 {
     $router->get('me', 'AuthController@me');
     $router->get('submissions', 'SubmissionController@index');
-    
+    $router->post('submissions', 'SubmissionController@store');    
 });
 
 $router->group(['prefix' => 'api'], function () use ($router) 
@@ -30,5 +30,4 @@ $router->group(['prefix' => 'api'], function () use ($router)
    $router->post('login', 'AuthController@login');
    $router->get('waiters/{id_location}', 'WaiterController@index');
    $router->post('waiters', 'WaiterController@store');
-   $router->post('submissions', 'SubmissionController@store');
 });

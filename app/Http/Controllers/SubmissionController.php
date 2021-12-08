@@ -27,6 +27,9 @@ class SubmissionController extends Controller
         $newSubmission->responses = $request->responses;
 
         $newSubmission->save();
+
+        return response()->json( 'Envío exitoso.', 201 )
+            ->header('Content-Type', 'application/json');
     }
 
     public function index()

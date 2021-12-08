@@ -20,12 +20,7 @@ class CreateSubmissionsTable extends Migration
             $table->string('cliente_email')->nullable();
             $table->string('cliente_telefono')->nullable();
 
-            $table->string('nombre_mesero');
-            $table->string('frecuencia_visita');
-            $table->integer('atencion_mesero');
-            $table->integer('rapidez_servicio');
-            $table->integer('calidad_comida');
-            $table->integer('experiencia_general');
+            $table->json('responses');
 
             $table->timestamps();
             $table->softDeletes();

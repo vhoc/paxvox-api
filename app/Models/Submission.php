@@ -12,11 +12,6 @@ class Submission extends Model
         'cliente_nombre',
         'cliente_email',
         'cliente_telefono',
-        'nombre_mesero',
-        'frecuencia_visita',
-        'atencion_mesero',
-        'rapidez_servicio',
-        'calidad_comida',
-        'experiencia_general'
+        'responses'
     ];
 }

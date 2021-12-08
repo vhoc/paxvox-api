@@ -19,11 +19,7 @@ class SubmissionController extends Controller
 
     public function store( Request $request )
     {
-        $newSubmission = new Submission;
-
-        $newSubmission = $request->all;
-
-        $newSubmission->save();
+        $newSubmission = Submission::create($request->all());
     }
 
     public function index()

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Query\Expression;
 
 class CreateSubmissionsTable extends Migration
 {
@@ -20,7 +21,7 @@ class CreateSubmissionsTable extends Migration
             $table->string('cliente_email')->nullable();
             $table->string('cliente_telefono')->nullable();
 
-            $table->json('responses');
+            $table->json('responses')->default(new Expression('(JSON_ARRAY())'));
 
             $table->timestamps();
             $table->softDeletes();

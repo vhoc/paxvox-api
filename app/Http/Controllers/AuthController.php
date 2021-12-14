@@ -99,7 +99,7 @@ class AuthController extends Controller
             $tokenFetch = auth('api')->authenticate();
             if ( $tokenFetch )
             {
-                $token = srt_replace( "Bearer ", "", $request->header('Authorization') );
+                $token = str_replace( "Bearer ", "", $request->header('Authorization') );
             }
             else
             {

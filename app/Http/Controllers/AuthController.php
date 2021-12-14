@@ -90,7 +90,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function validateToken( Request $requiest )
+    public function validateToken( Request $request )
     {
         $token = '';
 

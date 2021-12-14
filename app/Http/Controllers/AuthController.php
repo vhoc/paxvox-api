@@ -100,6 +100,7 @@ class AuthController extends Controller
             if ( $tokenFetch )
             {
                 $token = str_replace( "Bearer ", "", $request->header('Authorization') );
+                return response()->json(auth()->user());
             }
             else
             {

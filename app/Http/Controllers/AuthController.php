@@ -96,7 +96,7 @@ class AuthController extends Controller
 
         try
         {
-            $tokenFetch = $this->parseToken()->authenticate();
+            $tokenFetch = auth('api')->authenticate();
             if ( $tokenFetch )
             {
                 $token = srt_replace( "Bearer ", "", $request->header('Authorization') );

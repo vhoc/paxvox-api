@@ -83,4 +83,42 @@ class AuthController extends Controller
     {
         return response()->json(auth()->user());
     }
+
+    /**
+     * Validate Token
+     * 
+     * @param Request $request
+     * @return Response
+     */
+    public function validateToken( Request $requiest )
+    {
+        $token = '';
+
+        try
+        {
+            $tokenFetch = $this->jwt->parseToken()->authenticate();
+            if ( $tokenFetch )
+            {
+                $token = srt_replace( "Bearer ", "", $request->header('Authorization') );
+            }
+            else
+            {
+                $token = 'Token not found';
+            }
+        } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
+            $token = 'Token is invalid or expired';
+        }
+    }
+
+    /**
+     * Logout method
+     * 
+     */
+    public function logout()
+    {
+        if( Auth::check() )
+        {
+            
+        }
+    }
 }

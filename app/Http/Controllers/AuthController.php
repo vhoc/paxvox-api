@@ -101,16 +101,13 @@ class AuthController extends Controller
             if ( $tokenFetch )
             {
                 $token = str_replace( "Bearer ", "", $request->header('Authorization') );
-                return response()->json(auth()->user());
             }
             else
             {
                 $token = 'Token not found';
-                return response()->json();
             }
         } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
             $token = 'Token is invalid or expired';
-            return response()->json();
         }
     }
 

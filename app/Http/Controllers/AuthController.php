@@ -70,6 +70,7 @@ class AuthController extends Controller
         if (! $token = Auth::attempt($credentials)) {			
             return response()->json(['message' => 'Unauthorized'], 401);
         }
+
         return $this->respondWithToken($token);
     }
 	
@@ -105,9 +106,11 @@ class AuthController extends Controller
             else
             {
                 $token = 'Token not found';
+                return response()->json();
             }
         } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
             $token = 'Token is invalid or expired';
+            return response()->json();
         }
     }
 

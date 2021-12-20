@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Submission;
 
 class SubmissionChartController extends Controller
 {
@@ -16,7 +17,9 @@ class SubmissionChartController extends Controller
         $start_date = $request->start_date;
         $end_date = $request->end_date;
 
-        return response()->json($request);
+        $selected_submissions = Submission::whereBetween('created_at', [$start_date, $end_date])->get();
+
+        return response()->json($selected_submissions);
     }
 
 }

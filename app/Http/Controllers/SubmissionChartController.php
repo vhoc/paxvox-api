@@ -27,16 +27,23 @@ class SubmissionChartController extends Controller
             array_push($submissions_responses, $value->responses);
         }
 
+        // Extract the 'meseros' field from 'meseros0
         $meseros = [];
         foreach ( $submissions_responses as $response_element => $value )
         {
             array_push($meseros, $value['mesero']);
         }
 
+        // Create new array with the count of unique 'meseros'
         $meseros_count = array_count_values($meseros);
 
-        //return $meseros;
-        return response()->json($meseros_count);
+        // Convert the array into an object usable by the frontend.
+        $meseros_response = [];
+        foreach ( $meseros_count as $mesero => $value ) {
+            $meseros_response += [$mesero => $value];
+        }
+        
+        return response()->json($meseros_response);
 
 
         

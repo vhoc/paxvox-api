@@ -33,8 +33,10 @@ class SubmissionChartController extends Controller
             array_push($meseros, $value['mesero']);
         }
 
+        $meseros_count = array_count_values($meseros);
+
         //return $meseros;
-        return response()->json($meseros);
+        return response()->json($meseros_count);
 
 
         

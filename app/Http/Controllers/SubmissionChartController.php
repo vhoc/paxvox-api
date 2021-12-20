@@ -26,18 +26,13 @@ class SubmissionChartController extends Controller
         foreach ( $submissions_by_date_and_locaton as $submission => $value )
         {
             array_push($submissions_responses, $value->responses);
-            foreach ( $submissions_responses as $response => $value2 )
-            {
-                //array_push($meseros, $value2->mesero);
-                print_r($value2['mesero']);
-            }
         }
 
-        /*
+        
         foreach ( $submissions_responses as $response_element => $value )
         {
-            array_push($meseros, $value->mesero);
-        }*/
+            array_push($meseros, $value['mesero']);
+        }
 
         //return $meseros;
         return response()->json($meseros);

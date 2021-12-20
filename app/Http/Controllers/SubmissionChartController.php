@@ -25,7 +25,7 @@ class SubmissionChartController extends Controller
 
         foreach ( $selected_submissions as $submission => $value )
         {
-            array_push($filtered, $value);
+            array_push($filtered, $value->responses);
         }
         
         return response()->json($filtered);

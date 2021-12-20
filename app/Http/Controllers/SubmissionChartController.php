@@ -17,18 +17,27 @@ class SubmissionChartController extends Controller
         $start_date = $request->start_date;
         $end_date = $request->end_date;
 
-        $filtered = [];
+        // Select the submissions between the specified dates and belonging to the specified location.
+        $submissions_by_date_and_locaton = Submission::whereBetween('created_at', [$start_date, $end_date])->where('id_location', $id_location)->get();
 
-        $selected_submissions = Submission::whereBetween('created_at', [$start_date, $end_date])->where('id_location', $id_location)->get();
-
-       // return response()->json($selected_submissions[8]->responses);
-
-        foreach ( $selected_submissions as $submission => $value )
+        // Extract only the 'responses' child object from the $submissions_by_date_and_locaton parent object.
+        $submissions_responses = [];//
+        foreach ( $submissions_by_date_and_locaton as $submission => $value )
         {
-            array_push($filtered, $value->responses);
+            array_push($submissions_responses, $value->responses);
         }
+
+        foreach ( $submissions_responses as $response_element )
+        {
+            $element = json_decode($response_element, true);
+            $elements[ $element['mesero'] ]++;
+        }
+
+        return response()->json($elements);
+
+
         
-        return response()->json($filtered);
+        return response()->json($submissions_responses);
     }
 
 }

@@ -28,7 +28,8 @@ class SubmissionChartController extends Controller
             array_push($submissions_responses, $value->responses);
             foreach ( $submissions_responses as $response => $value2 )
             {
-                array_push($meseros, $value2->mesero);
+                //array_push($meseros, $value2->mesero);
+                print_r($meseros);
             }
         }
 

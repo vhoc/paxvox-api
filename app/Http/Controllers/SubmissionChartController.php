@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SubmissonChartController extends Controller
+class SubmissionChartController extends Controller
 {
     
     /**

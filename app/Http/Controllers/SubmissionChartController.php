@@ -21,14 +21,13 @@ class SubmissionChartController extends Controller
         $submissions_by_date_and_locaton = Submission::whereBetween('created_at', [$start_date, $end_date])->where('id_location', $id_location)->get();
 
         // Extract only the 'responses' child object from the $submissions_by_date_and_locaton parent object.
-        $submissions_responses = [];//
-        $meseros = [];
+        $submissions_responses = [];
         foreach ( $submissions_by_date_and_locaton as $submission => $value )
         {
             array_push($submissions_responses, $value->responses);
         }
 
-        
+        $meseros = [];
         foreach ( $submissions_responses as $response_element => $value )
         {
             array_push($meseros, $value['mesero']);

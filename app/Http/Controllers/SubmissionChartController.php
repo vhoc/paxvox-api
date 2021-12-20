@@ -33,7 +33,7 @@ class SubmissionChartController extends Controller
             array_push($meseros, $value);
         }
 
-        return response()->json($meseros);
+        return response()->json($meseros->mesero);
 
 
         

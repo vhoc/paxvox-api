@@ -27,13 +27,13 @@ class SubmissionChartController extends Controller
             array_push($submissions_responses, $value->responses);
         }
 
-        foreach ( $submissions_responses as $response_element )
+        $meseros = [];
+        foreach ( $submissions_responses as $response_element => $value )
         {
-            $element = $response_element;
-            //$elements[ $element->mesero ]++;
+            array_push($meseros, $value->mesero);
         }
 
-        return response()->json($submissions_responses);
+        return response()->json($meseros);
 
 
         

@@ -29,7 +29,7 @@ class SubmissionChartController extends Controller
 
         foreach ( $submissions_responses as $response_element )
         {
-            $element = json_decode($response_element, true);
+            $element = $response_element;
             $elements[ $element['mesero'] ]++;
         }
 

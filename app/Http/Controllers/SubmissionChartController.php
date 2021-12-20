@@ -44,8 +44,8 @@ class SubmissionChartController extends Controller
         {
             foreach ( $meseros_count as $mesero => $value)
             {
-                $meseros_response += [ "name" => $mesero];
-                $meseros_response += [ "count" => $value];
+                $meseros_responses += [ "name" => $mesero];
+                $meseros_responses += [ "count" => $value];
             }
         }
         /*

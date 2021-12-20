@@ -16,6 +16,7 @@ class CreateSubmissionsTable extends Migration
     {
         Schema::create('submissions', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_location');
 
             $table->string('cliente_nombre')->nullable();
             $table->string('cliente_email')->nullable();

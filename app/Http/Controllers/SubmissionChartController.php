@@ -54,7 +54,7 @@ class SubmissionChartController extends Controller
             $meseros_response += [ "count" => $value];
         }*/
         
-        return response()->json($meseros_count);
+        return response()->json($meseros_responses);
 
 
         

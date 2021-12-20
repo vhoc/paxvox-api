@@ -22,16 +22,21 @@ class SubmissionChartController extends Controller
 
         // Extract only the 'responses' child object from the $submissions_by_date_and_locaton parent object.
         $submissions_responses = [];//
+        $meseros = [];
         foreach ( $submissions_by_date_and_locaton as $submission => $value )
         {
             array_push($submissions_responses, $value->responses);
+            foreach ( $submissions_responses as $response => $value2 )
+            {
+                array_push($meseros, $value2->mesero);
+            }
         }
 
-        $meseros = [];
+        /*
         foreach ( $submissions_responses as $response_element => $value )
         {
             array_push($meseros, $value->mesero);
-        }
+        }*/
 
         //return $meseros;
         return response()->json($meseros);

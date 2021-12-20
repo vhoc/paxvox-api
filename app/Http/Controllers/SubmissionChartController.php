@@ -40,7 +40,7 @@ class SubmissionChartController extends Controller
         // Convert the array into an object usable by the frontend.
         $meseros_response = [];
         foreach ( $meseros_count as $mesero => $value ) {
-            $meseros_response += [$mesero => $value];
+            $meseros_response += [$mesero];
         }
         
         return response()->json($meseros_response);

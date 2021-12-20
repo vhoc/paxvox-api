@@ -19,7 +19,9 @@ class SubmissionChartController extends Controller
 
         $selected_submissions = Submission::whereBetween('created_at', [$start_date, $end_date])->where('id_location', $id_location)->get();
 
-        return response()->json($selected_submissions);
+        return $select_submissions->responses;
+
+        //return response()->json($selected_submissions);
     }
 
 }

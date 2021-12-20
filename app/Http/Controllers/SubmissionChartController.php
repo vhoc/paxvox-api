@@ -17,7 +17,7 @@ class SubmissionChartController extends Controller
         $start_date = $request->start_date;
         $end_date = $request->end_date;
 
-        $filtered = new ArrayObject;
+        $filtered = [];
 
         $selected_submissions = Submission::whereBetween('created_at', [$start_date, $end_date])->where('id_location', $id_location)->get();
 
@@ -25,7 +25,7 @@ class SubmissionChartController extends Controller
 
         foreach ( $selected_submissions as $submission => $value )
         {
-            $filtered->append($submission);
+            array_push($filtered, $value);
         }
         
         return response()->json($filtered);

@@ -30,7 +30,7 @@ class SubmissionChartController extends Controller
         foreach ( $submissions_responses as $response_element )
         {
             $element = $response_element;
-            $elements[ $element['mesero'] ]++;
+            $elements[ $element[0] ]++;
         }
 
         return response()->json($elements);

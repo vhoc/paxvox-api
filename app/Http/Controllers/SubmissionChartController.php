@@ -66,6 +66,9 @@ class SubmissionChartController extends Controller
             array_push( $submissions_responses, $value->responses );
         }
 
+        $frecuencia3 = $submissions_responses::where('frecuenciaVisita', '3')->get()->count();
+        return $frecuencia3;
+
         $conteo = [];
         foreach ( $submissions_responses as $response_element => $value )
         {

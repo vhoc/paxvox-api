@@ -68,7 +68,7 @@ class SubmissionChartController extends Controller
 
     
         $submissions = collect($submissions_responses);
-        $frecuencia3 = $submissions->where('frecuenciaVisita', '=','3')->all();
+        $frecuencia3 = $submissions->where('frecuenciaVisita', '=','3')->all()->count();
         return response()->json( $frecuencia3 );
 
         $conteo = [];

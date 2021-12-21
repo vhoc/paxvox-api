@@ -72,7 +72,7 @@ class SubmissionChartController extends Controller
             array_push( $conteo, $value['frecuenciaVisita'] );
         }
 
-        return response()->json( $conteo );
+        return response()->json( $submissions_responses );
     }
 
 }

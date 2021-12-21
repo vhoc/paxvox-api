@@ -58,7 +58,7 @@ class SubmissionChartController extends Controller
 
         // Select the submissions between the specified dates and belonging to the specified location.
         $submissions_by_date_and_locaton = Submission::whereBetween('created_at', [$start_date, $end_date])->where('id_location', $id_location)->get();
-        return $submissions_by_date_and_locaton;
+        //return $submissions_by_date_and_locaton;
 
         // Extract only the 'responses' child object from the submissions_by_date_and_locaton parent object.
         $submissions_responses = [];

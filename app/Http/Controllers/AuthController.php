@@ -71,10 +71,13 @@ class AuthController extends Controller
             return response()->json(['message' => 'Unauthorized'], 401);
         }
 
+        $user = JWTAuth::toUser($token);
+
         //return $this->respondWithToken($token);
         return response()->json([
             'token' => $token,
-            'token_type' => 'bearer'
+            'token_type' => 'bearer',
+            'id_location' => $user->id_location
         ]);
     }
 	

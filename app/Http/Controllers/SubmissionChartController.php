@@ -41,20 +41,25 @@ class SubmissionChartController extends Controller
         $meseros_responses = [];
         foreach ( $meseros_count as $mesero => $value)
         {
-            //$meseros_responses += [ "name" => $mesero, "count" => $value ];
             array_push($meseros_responses, [ "name" => $mesero, "count" => $value ]);
         }
-        /*
-        foreach ( $meseros_count as $mesero => $value ) {
-            $meseros_response += [ "name" => $mesero];
-            $meseros_response += [ "count" => $value];
-        }*/
         
         return response()->json($meseros_responses);
+    }
 
+    /**
+     * frecuencia_de_visita
+     */
+    public function frecuencia_de_visita( Request $request )
+    {
+        $id_location = $request->id_location;
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
 
-        
-        return response()->json($submissions_responses);
+        // Select the submissions between the specified dates and belonging to the specified location.
+        $submissions_by_date_and_locaton = Submission::whereBetween('created_at', [$start_date, $end_date])->where('id_location', $id_location)->get();
+
+        return response()->json( $submissions_by_date_and_locaton );
     }
 
 }

@@ -27,6 +27,7 @@ class SubmissionController extends Controller
             $newSubmission->cliente_email = $request->clienteEmail;
             $newSubmission->cliente_telefono = $request->clienteTelefono;
             $newSubmission->responses = $request->responses;
+            $newSubmission->id_location = $request->id_location;
 
             $newSubmission->save();
 

@@ -67,7 +67,7 @@ class SubmissionChartController extends Controller
         }
 
         $conteo = [];
-        foreach ( $submission_responses as $response_element => $value )
+        foreach ( $submissions_responses as $response_element => $value )
         {
             array_push( $conteo, $value['frecuenciaVisita'] );
         }

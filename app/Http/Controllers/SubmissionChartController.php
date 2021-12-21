@@ -67,19 +67,12 @@ class SubmissionChartController extends Controller
             array_push( $submissions_responses, $value->responses );
         }
 
-    
+        // Place the result in a collection and sort them.
         $submissions = collect($submissions_responses);
         $frecuencia = $submissions->sort();
         $frecuencia = $frecuencia->countBy('frecuenciaVisita');
+
         return response()->json($frecuencia);
-
-        $conteo = [];
-        foreach ( $submissions_responses as $response_element => $value )
-        {
-            array_push( $conteo, $value['frecuenciaVisita'] );
-        }
-
-        return response()->json( $submissions_responses );
     }
 
 }

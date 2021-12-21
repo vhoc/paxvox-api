@@ -66,7 +66,13 @@ class SubmissionChartController extends Controller
             array_push( $submissions_responses, $value->responses );
         }
 
-        return response()->json( $submissions_responses->frecuenciaVisita );
+        $conteo = [];
+        foreach ( $submission_responses as $response_element => $value )
+        {
+            array_push( $conteo, $value['frecuenciaVisita'] );
+        }
+
+        return response()->json( $conteo );
     }
 
 }

@@ -78,7 +78,7 @@ class SubmissionChartController extends Controller
     /**
      * atencion_mesero
      */
-    public function atencion_mesero( Request $request )
+    public function field_response( Request $request )
     {
         $id_location = $request->id_location;
         $start_date = $request->start_date;
@@ -96,9 +96,9 @@ class SubmissionChartController extends Controller
 
         $submissions = collect($submissions_responses);
         $collection_submissions = $submissions->sort();
-        $atencion_mesero = $collection_submissions->countBy( $field_name );
+        $field_response = $collection_submissions->countBy( $field_name );
 
-        return response()->json($atencion_mesero);
+        return response()->json($field_response);
     }
 
 }

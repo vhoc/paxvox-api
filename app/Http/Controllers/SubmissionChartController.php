@@ -75,4 +75,29 @@ class SubmissionChartController extends Controller
         return response()->json($frecuencia);
     }
 
+    /**
+     * atencion_mesero
+     */
+    public function atencion_mesero( Request $request )
+    {
+        $id_location = $request->id_location;
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+        // Select the submissions between the specified dates and belonging to the specified location.
+        $submissions_by_date_and_locaton = Submission::whereBetween('created_at', [$start_date, $end_date])->where('id_location', $id_location)->get();
+
+        $submissions_responses = [];
+        foreach ( $submissions_by_date_and_locaton as $submission => $value )
+        {
+            array_push( $submissions_responses, $value->responses );
+        }
+
+        $submissions = collect($submissions_responses);
+        $collection_submissions = $submissions->sort();
+        $atencion_mesero = $collection_submissions->countBy('atencionMesero');
+
+        return response()->json($atencion_mesero);
+    }
+
 }

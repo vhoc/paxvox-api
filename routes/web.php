@@ -33,4 +33,5 @@ $router->group(['prefix' => 'api'], function () use ($router)
    $router->get('validateToken', 'AuthController@validateToken');
    $router->post('reports/meseros', 'SubmissionChartController@meseros');
    $router->post('reports/frecuencia', 'SubmissionChartController@frecuencia_de_visita');
+   $router->post('reports/atencion_mesero', 'SubmissionChartController@atencion_mesero');
 });

@@ -95,7 +95,7 @@ class SubmissionChartController extends Controller
         }
 
         $submissions = collect($submissions_responses);
-        $collection_submissions = $submissions->sortKeys();
+        $collection_submissions = $submissions->sortKeysDesc();
         $field_response = $collection_submissions->countBy( $field_name );
 
         return response()->json($field_response);

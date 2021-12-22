@@ -99,7 +99,7 @@ class SubmissionChartController extends Controller
         $field_response = $submissions->countBy( $field_name );
         $field_response_sorted = $field_response->sort();
 
-        return response()->json($field_response);
+        return response()->json($field_response_sorted);
     }
 
 }

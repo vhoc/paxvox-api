@@ -75,7 +75,7 @@ class AuthController extends Controller
         $user = Auth::user($token);
 
         $user_location = Location::where('id', $user->id_location)->get();
-        $user_location = $user_location->name;
+        $user_location = $user_location['name'];
 
         //return $this->respondWithToken($token);
         return response()->json([

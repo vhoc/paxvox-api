@@ -81,7 +81,7 @@ class AuthController extends Controller
             'token' => $token,
             'token_type' => 'bearer',
             'id_location' => $user->id_location,
-            'name_location' => $user_location
+            'name_location' => $user_location[0]
         ]);
     }
 	

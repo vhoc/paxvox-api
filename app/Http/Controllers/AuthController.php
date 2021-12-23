@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Location;
 
 class AuthController extends Controller
 {
@@ -73,11 +74,14 @@ class AuthController extends Controller
 
         $user = Auth::user($token);
 
+        $user_location = Location::where('id', $user->id_location)->get('name');
+
         //return $this->respondWithToken($token);
         return response()->json([
             'token' => $token,
             'token_type' => 'bearer',
-            'id_location' => $user->id_location
+            'id_location' => $user->id_location,
+            'name_location' => $user_location
         ]);
     }
 	

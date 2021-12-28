@@ -34,4 +34,5 @@ $router->group(['prefix' => 'api'], function () use ($router)
    $router->post('reports/meseros', 'SubmissionChartController@meseros');
    $router->post('reports/frecuencia', 'SubmissionChartController@frecuencia_de_visita');
    $router->post('reports', 'SubmissionChartController@field_response');
+   $router->get('location/{id}', 'LocationController@get');
 });

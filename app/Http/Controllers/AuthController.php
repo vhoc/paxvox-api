@@ -112,7 +112,8 @@ class AuthController extends Controller
             if ( $tokenFetch )
             {
                 $token = str_replace( "Bearer ", "", $request->header('Authorization') );
-                return response()->json(auth()->user());
+                return response()->json(auth()->user());// Modificar aqui, debe retornar el nombre de la ubicacion como en el metodo login. Eso o modificar el frontend.
+                //return response()->json()
             }
             else
             {

@@ -10,7 +10,7 @@ class LocationController extends Controller
     
     public function get( $id )
     {
-        $location = Location::where('id', $id)->get();
+        $location = Location::where('id', $id)->pluck();
         return response()->json($location);
     }
 
